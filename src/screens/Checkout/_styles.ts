@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import Color from "../../constants/Color";
 
 const styles = StyleSheet.create({
   container: {
@@ -35,34 +34,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingVertical: 20,
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    height: 100, // Set the height as desired
-  },
-  modalContentWrapper: {
-    backgroundColor: Color.PRIMARY,
-    padding: 20,
-    borderRadius: 10,
-    alignItems: "center",
-  },
-  checkout: {
-    position: "absolute",
-    bottom: 20,
-    right: 15,
-    backgroundColor: Color.PRIMARY,
-    padding: 20,
-    borderRadius: 50,
-  },
-  checkoutText: {
-    position: "absolute",
-    top: 15,
-    right: 15,
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "700",
   },
 });
 

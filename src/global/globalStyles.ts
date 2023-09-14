@@ -1,34 +1,35 @@
 import { StyleSheet } from "react-native";
 import Color from "../constants/Color";
-import { scale, verticalScale, moderateScale } from 'react-native-size-matters';
+import { scale, verticalScale, moderateScale } from "react-native-size-matters";
 
 const globalStyles = StyleSheet.create({
   label: {
-    fontFamily: 'PLUS-JAKARTA-SANS-SEMI-BOLD',
-    color: Color.RED,
+    fontFamily: "PLUS-JAKARTA-SANS-SEMI-BOLD",
+    color: Color.SECONDARY_TEXT,
     fontSize: moderateScale(10),
-
   },
   bodyText: {
-    fontFamily: 'PLUS-JAKARTA-SANS-REGULAR',
+    fontFamily: "PLUS-JAKARTA-SANS-REGULAR",
   },
   heading: {
-    fontFamily: 'PLUS-JAKARTA-SANS-MEDIUM',
+    fontFamily: "PLUS-JAKARTA-SANS-MEDIUM",
     fontSize: moderateScale(18),
     lineHeight: 26,
+    fontWeight: "bold",
   },
   title: {
-    fontFamily: 'PLUS-JAKARTA-SANS-BOLD',
-    fontSize: 24,
+    fontFamily: "PLUS-JAKARTA-SANS-BOLD",
+    fontSize: 18,
     lineHeight: 26,
+    fontWeight: "bold",
   },
   callToAction: {
-    fontFamily: 'PLUS-JAKARTA-SANS-EXTRA-BOLD',
+    fontFamily: "PLUS-JAKARTA-SANS-EXTRA-BOLD",
     fontSize: 26,
-    lineHeight: 30
+    lineHeight: 30,
   },
   buttonText: {
-    fontFamily: 'PLUS-JAKARTA-SANS-BOLD',
+    fontFamily: "PLUS-JAKARTA-SANS-BOLD",
     fontSize: 16,
     lineHeight: 20,
   },
@@ -147,22 +148,22 @@ const globalStyles = StyleSheet.create({
     fontSize: 8,
     lineHeight: 6,
   },
-  container:{
+  container: {
     flex: 1,
-    backgroundColor: Color.PRIMARY
-  },
-  headerContainer:{
     backgroundColor: Color.PRIMARY,
-    justifyContent: 'center'
   },
-  headerText:{
-    marginHorizontal:10, 
-    color: Color.WHITE, 
+  headerContainer: {
+    backgroundColor: Color.PRIMARY,
+    justifyContent: "center",
+  },
+  headerText: {
+    marginHorizontal: 10,
+    color: Color.WHITE,
     fontSize: 22,
-    fontFamily: 'PLUS-JAKARTA-SANS-BOLD',
+    fontFamily: "PLUS-JAKARTA-SANS-BOLD",
     paddingTop: 10,
-    paddingBottom: 5
-  }
+    paddingBottom: 5,
+  },
 });
 
-  export default globalStyles;
+export default globalStyles;

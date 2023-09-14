@@ -1,68 +1,67 @@
 const ColorConstants = {
+  //"DARK_PRIMARY": '#fa0f37',
+  DARK_PRIMARY: "#c0171a",
+  BACKGROUND: "#EBEAEF",
+  BUTTON_BACKGROUND: "#2386FB",
 
-    //"DARK_PRIMARY": '#fa0f37',
-    "DARK_PRIMARY": '#c0171a',
-    "BACKGROUND": "#EBEAEF",
-    "BUTTON_BACKGROUND": '#2386FB',
+  //"PRIMARY": '#fa0f37',
+  // "PRIMARY": '#c0171a',
+  PRIMARY: "#5BBC4E",
+  TAB_BACKGROUND: "#ffffff",
 
-    //"PRIMARY": '#fa0f37',
-    // "PRIMARY": '#c0171a',
-    "PRIMARY": '#252326',
-    "TAB_BACKGROUND": '#ffffff',
+  NOTIFICATION: "#F01C2F",
 
-    "NOTIFICATION": '#F01C2F',
-    
-    "LIGHT_PRIMARY": '#e9f0fb',
+  LIGHT_PRIMARY: "#e9f0fb",
 
-    "SECONDARY": '#F5F7FA',
-    
-    "LIGHT_SECONDARY": '#ffd9be',
+  SECONDARY: "#F5F7FA",
 
-    "TEXT": 'black',
+  LIGHT_SECONDARY: "#ffd9be",
 
-    "ACCENT": '#d7fe0d',
+  TEXT: "black",
 
-    "PRIMARY_TEXT": '#293944',
+  ACCENT: "#d7fe0d",
 
-    "SECONDARY_TEXT": '#F5F7FA',
+  PRIMARY_TEXT: "#293944",
 
-    "DIVIDER": '#f0f0f0',
+  SECONDARY_TEXT: "#101F43",
 
-    "WHITE": '#fff',
+  DIVIDER: "#f0f0f0",
 
-    "BLACK": '#000',
+  WHITE: "#fff",
 
-    "BLUE": '#1e68d7',
+  BLACK: "#000",
 
-    "BROWN": '#7a3f00',
+  BLUE: "#1e68d7",
 
-    "LIGHT_BROWN": '#cc6900',
+  BROWN: "#7a3f00",
 
-    "DARK_BLUE": '#102447',
+  LIGHT_BROWN: "#cc6900",
 
-    "GRAY": 'gray',
+  DARK_BLUE: "#102447",
 
-    "LIGHT_GRAY": 'lightgray',
+  GRAY: "gray",
 
-    "GREEN": '#00b0b0',
-    
-    "LIGHT_GREEN": '#5fce9b',
+  LIGHT_GRAY: "lightgray",
 
-    "INDIGO": '#4a3eba',
+  GREEN: "#00b0b0",
 
-    "LIGHT_BLUE": '#4aa7fd',
+  LIGHT_GREEN: "#5fce9b",
 
-    "ORANGE": '#ffc107',
+  INDIGO: "#4a3eba",
 
-    "PINK": '#cd88a4',
+  LIGHT_BLUE: "#4aa7fd",
 
-    "RED": '#c52736',
+  ORANGE: "#ffc107",
 
-    "YELLOW": '#f5d500',
+  PINK: "#cd88a4",
 
-    "VIOLET": '#77097c',
-    
-    "RED_ACCENT": '#F64646'
-}
+  RED: "#c52736",
+
+  YELLOW: "#f5d500",
+
+  VIOLET: "#77097c",
+
+  RED_ACCENT: "#F64646",
+};
 
 export default ColorConstants;
