@@ -14,6 +14,7 @@ export default function SearchBar({ searchText, handleSearch }: ISearchBar) {
         borderWidth: 1,
         marginBottom: 10,
       }}
+      clearButtonMode="always"
       placeholder="Search by product name"
       onChangeText={(text) => handleSearch(text)}
       value={searchText}

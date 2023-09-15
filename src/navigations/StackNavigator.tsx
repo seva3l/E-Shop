@@ -4,11 +4,11 @@ import CheckoutScreen from "../screens/Checkout";
 import Color from "../constants/Color";
 
 type RootStackParamList = {
-  Login: undefined;
   Drawer: undefined;
   Checkout: undefined;
 };
 const Stack = createNativeStackNavigator<RootStackParamList>();
+
 const StackNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="Drawer">
@@ -26,7 +26,8 @@ const StackNavigator = () => {
           title: "Checkout",
           headerTitleStyle: {
             color: Color.PRIMARY,
-          }, // Customize the title if needed
+          },
+          headerBackTitle: "Back",
         }}
       />
     </Stack.Navigator>

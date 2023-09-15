@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React from "react";
 import { Ionicons } from "@expo/vector-icons";
-import Color from "../../../constants/Color";
+import Color from "../../constants/Color";
 
 interface IPriceSort {
   handleSortByPrice: (asc: boolean) => void;

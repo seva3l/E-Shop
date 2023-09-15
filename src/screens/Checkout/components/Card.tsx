@@ -9,17 +9,14 @@ import { CartContext } from "../../../store/cart/CartContext";
 
 interface ICard extends ICart {}
 export default function Card({ item, quantity }: ICard) {
-  const { addToCart, removeFromCart, updateCartItemQuantity } =
-    useContext(CartContext);
+  const { removeFromCart, updateCartItemQuantity } = useContext(CartContext);
 
   const handleIncrement = () => {
-    // Increase the quantity
-    addToCart(item);
+    updateCartItemQuantity(item.id, quantity + 1);
   };
 
   const handleDecrement = () => {
     if (quantity !== 1) {
-      // Decrease the quantity, but ensure it stays at least 1
       updateCartItemQuantity(item.id, quantity - 1);
     } else {
       removeFromCart(item.id);
@@ -143,7 +140,7 @@ const styles = StyleSheet.create({
   },
   quantityContainer: {
     flexDirection: "row",
-    alignItems: "center",
+    justifyContent: "flex-end",
     gap: 5,
   },
 });

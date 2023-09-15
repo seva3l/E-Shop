@@ -64,6 +64,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "700",
   },
+  productNotFoundContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
 
 export default styles;

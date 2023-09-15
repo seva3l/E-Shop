@@ -3,6 +3,9 @@ import axios from "axios";
 import IProduct from "../../interface/Product";
 import items from "../../../items.json";
 
+type SetCategoriesFunction = React.Dispatch<
+  React.SetStateAction<ICategories[]>
+>;
 export interface ProductContextValue {
   products: IProduct[];
   fetchProducts: () => void;
@@ -11,6 +14,8 @@ export interface ProductContextValue {
   categories: ICategories[];
   filterProductsByCategory: (category: string) => void;
   extractCategories: (products: IProduct[]) => void;
+  originalProducts: IProduct[];
+  setCategories: SetCategoriesFunction;
 }
 
 export interface ICategories {
@@ -18,19 +23,34 @@ export interface ICategories {
   value: string;
 }
 
-export const ProductContext = createContext<ProductContextValue | undefined>(
-  undefined
-);
+export const ProductContext = createContext<ProductContextValue>({
+  products: [],
+  originalProducts: [],
+  fetchProducts: () => {},
+  sortProductsByUnitPrice: (ascending) => {},
+  searchProductsByName: (searchText) => {},
+  categories: [], // Initially, no categories are available
+  filterProductsByCategory: (category) => {},
+  extractCategories: (products) => {},
+  setCategories: () => {},
+});
 
 export const ProductProvider: React.FC<{ children?: React.ReactNode }> = ({
   children,
 }) => {
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [originalProducts, setOriginalProducts] = useState<IProduct[]>([]);
   const [categories, setCategories] = useState<ICategories[]>([]);
+  const [searchText, setSearchText] = useState<string>("");
 
   const fetchProducts = () => {
     setProducts(items);
+    setOriginalProducts(items);
   };
+
+  useEffect(() => {
+    extractCategories(originalProducts);
+  }, [originalProducts, products]);
 
   const sortProductsByUnitPrice = (ascending: boolean) => {
     // Create a copy of the products array to avoid modifying the original
@@ -70,7 +90,7 @@ export const ProductProvider: React.FC<{ children?: React.ReactNode }> = ({
 
   const filterProductsByCategory = (category: string) => {
     if (category !== "") {
-      const filtered = products.filter(
+      const filtered = originalProducts.filter(
         (product) => product.category === category
       );
       setProducts(filtered);
@@ -87,6 +107,8 @@ export const ProductProvider: React.FC<{ children?: React.ReactNode }> = ({
     categories,
     filterProductsByCategory,
     extractCategories,
+    originalProducts,
+    setCategories,
   };
 
   return (

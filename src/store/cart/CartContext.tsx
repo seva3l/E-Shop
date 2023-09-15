@@ -15,9 +15,16 @@ export interface CartContextValue {
   getTotalPrice: () => number;
 }
 
-export const CartContext = createContext<CartContextValue | undefined>(
-  undefined
-);
+export const CartContext = createContext<CartContextValue>({
+  cart: [],
+  fetchCart: () => {},
+  addToCart: (item, showModal) => {},
+  isModalVisible: false,
+  removeFromCart: (itemId) => {},
+  clearCart: (showModal) => {},
+  updateCartItemQuantity: (itemId, newQuantity) => {},
+  getTotalPrice: () => 0, // Initial total price is 0
+});
 
 export const CartProvider: React.FC<{ children?: React.ReactNode }> = ({
   children,
@@ -30,28 +37,33 @@ export const CartProvider: React.FC<{ children?: React.ReactNode }> = ({
       (cartItem: ICart) => cartItem.item.id === item.id
     );
 
+    let updatedCart;
+
     if (existingCartItemIndex !== -1) {
       // If it exists, increment its quantity
-      const updatedCart = [...cart];
+      updatedCart = [...cart];
       updatedCart[existingCartItemIndex].quantity += 1;
       setCart(updatedCart);
     } else {
       // If it doesn't exist, add it as a new item with quantity 1 at the beginning
-      const updatedCart = [{ item, quantity: 1 }, ...cart];
+      updatedCart = [{ item, quantity: 1 }, ...cart];
       setCart(updatedCart);
     }
+
     try {
-      await AsyncStorage.setItem("cart", JSON.stringify(cart));
+      // Save the updated cart data (updatedCart) to AsyncStorage
+      await AsyncStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      if (showModal) {
+        setModalVisible(true);
+
+        // You can set a timeout to hide the modal after a few seconds
+        setTimeout(() => {
+          setModalVisible(false);
+        }, 500); // Adjust the time as needed
+      }
     } catch (e) {
       console.error(e);
-    }
-    if (showModal) {
-      setModalVisible(true);
-
-      // You can set a timeout to hide the modal after a few seconds
-      setTimeout(() => {
-        setModalVisible(false);
-      }, 500); // Adjust the time as needed
     }
   };
 
@@ -107,17 +119,31 @@ export const CartProvider: React.FC<{ children?: React.ReactNode }> = ({
   const fetchCart = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem("cart");
-      if (jsonValue !== null) {
+      if (jsonValue) {
         const parsedValue: ICart[] = JSON.parse(jsonValue);
         setCart(parsedValue);
-      } else {
-        setCart([]);
       }
     } catch (e) {
       console.error(e);
-      setCart([]);
     }
   };
+
+  useEffect(() => {
+    const loadCartStorageData = async () => {
+      try {
+        const jsonValue = await AsyncStorage.getItem("cart");
+        if (jsonValue) {
+          const parsedValue: ICart[] = JSON.parse(jsonValue);
+          setCart(parsedValue);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    };
+
+    loadCartStorageData();
+  }, []);
+
   const contextValue: CartContextValue = {
     cart,
     fetchCart,
